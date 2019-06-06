@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Ya.Rasp</string>
+
+    <string-array name="test_stations">
+        <item>s9606377</item>
+        <item>s9606096</item>
+        <item>s9606245</item>
+    </string-array>
+</resources>

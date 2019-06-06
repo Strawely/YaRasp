@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryBackground"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_rasp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/text_rasp_title"
+                style="@style/ToolBarTextView"
+                android:text="Расписание" />
+
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <AutoCompleteTextView
+        android:id="@+id/edit_rasp_departure"
+        style="@style/StationEditText"
+        android:hint="Станция отправления"
+        app:layout_constraintEnd_toStartOf="@id/img_rasp_reverse"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_rasp" />
+
+    <AutoCompleteTextView
+        android:id="@+id/edit_rasp_arrival"
+        style="@style/StationEditText"
+        android:hint="Станция прибытия"
+        app:layout_constraintEnd_toStartOf="@id/img_rasp_reverse"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_rasp_departure" />
+
+    <TextView
+        android:id="@+id/edit_rasp_date"
+        style="@style/StationEditText"
+        android:text="08.06.2019"
+        android:onClick="onDateClick"
+        app:layout_constraintTop_toBottomOf="@id/edit_rasp_arrival"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <ImageView
+        android:id="@+id/img_rasp_reverse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/colorAccent"
+        android:onClick="onReverseClick"
+        android:src="@drawable/ic_reverse"
+        app:layout_constraintBottom_toBottomOf="@+id/edit_rasp_arrival"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/edit_rasp_departure"
+        app:layout_constraintTop_toTopOf="@id/edit_rasp_departure" />
+
+    <Button
+        android:id="@+id/btn_rasp_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@color/colorAccent"
+        android:onClick="onSearchClick"
+        android:text="Найти"
+        android:textColor="@color/colorText"
+        app:layout_constraintTop_toBottomOf="@id/edit_rasp_date"
+        tools:layout_editor_absoluteX="8dp" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_rasp_trains"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_rasp_search"
+        tools:listitem="@layout/item_train">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
