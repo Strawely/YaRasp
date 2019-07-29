@@ -25,11 +25,14 @@
     </style>
 
     <style name="StationEditText">
+        <item name="android:textSize">@dimen/text_size_normal</item>
+        <item name="android:background">#ffffff</item>
         <item name="android:textColorHint">@color/colorTextAccentHint</item>
-        <item name="android:maxEms">32</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_marginRight">8dp</item>
         <item name="android:padding">8dp</item>
         <item name="android:textColor">@color/colorAccentDark</item>
     </style>
@@ -39,5 +42,14 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/colorAccentDark</item>
     </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

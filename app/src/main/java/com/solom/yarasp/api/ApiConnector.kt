@@ -8,6 +8,7 @@ import com.solom.yarasp.DoubleTypeAdapter
 import com.solom.yarasp.Repository
 import com.solom.yarasp.model.TrainsResponse
 import com.solom.yarasp.model.stations.Country
+import com.solom.yarasp.model.stations.Region
 import com.solom.yarasp.model.stations.Station
 import okhttp3.OkHttpClient
 import retrofit2.Call
@@ -57,11 +58,17 @@ object ApiConnector {
         Log.i(logTag, "getting stations...")
         val response = yaApi.getStations().execute()
         if (response.isSuccessful) {
+
+            Repository.countries.clear()
+            Repository.regions.clear()
             Repository.stationsList.clear()
+
             val countries = response.body()?.countries ?: arrayListOf()
-            val settlements = countries.find { it.codes.yandexCode == "l225" }!!
-                .regions
-                .find { it.codes.yandexCode == "r11131" }!!
+            Repository.countries.addAll(countries)
+            Repository.regions.addAll(countries.find { it.codes.yandexCode == "l225" }?.regions ?: arrayListOf()) // l225 - Россия
+
+            Repository.currentRegion = Repository.regions.find { it.codes.yandexCode == "r11131" } ?: Region()
+            val settlements = Repository.regions.find { it.codes.yandexCode == "r11131" }!! // r11131 - Самарская область
                 .settlements
                 .forEach {
                     it.stations.filter { station -> station.transportType == "train" }
@@ -69,17 +76,6 @@ object ApiConnector {
                             Repository.stationsList.add(station)
                         }
                 }
-
-//                for (country in countries)
-//                    if (country.codes.yandexCode == "l225")
-//                        for (region in country.regions)
-//                            if (region.codes.yandexCode ==)
-//                                for (settlement in region.settlements)
-//                                    for (station in settlement.stations)
-//                                        if (station.transportType == "train")
-//                                            Repository.stationsList.add(station)
-
-
         } else {
             print("$logTag : ${response.errorBody()}")
         }

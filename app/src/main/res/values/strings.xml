@@ -1,9 +1,8 @@
 <resources>
     <string name="app_name">Ya.Rasp</string>
+    <string name="open_drawer">drawer open</string>
+    <string name="close_drawer">drawer close</string>
 
-    <string-array name="test_stations">
-        <item>s9606377</item>
-        <item>s9606096</item>
-        <item>s9606245</item>
-    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
